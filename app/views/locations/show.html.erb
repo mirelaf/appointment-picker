@@ -1,0 +1,36 @@
+<h3>Location id: <%= @location.id %></h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Day start:</td><td><%= @location.day_start.strftime("%H:%M") %></td>
+    </tr>
+    <tr>
+      <td>Day end:</td><td><%= @location.day_end.strftime("%H:%M") %></td>
+    </tr>
+        <tr>
+      <td>Lunch start:</td><td><%= @location.lunch_start.strftime("%H:%M") %></td>
+    </tr>
+        <tr>
+      <td>Lunch end:</td><td><%= @location.lunch_end.strftime("%H:%M") %></td>
+    </tr>
+        <tr>
+      <td>Appointment duration:</td><td><%= @location.appointment_duration_minutes %> minutes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Appointments already booked:</h3>
+
+<% @location.appointments.each do |appointment| %>
+  <%= appointment.from.strftime("%d.%m.%Y %H:%M") %> - <%= appointment.to.strftime("%H:%M") %>
+  <br>
+<% end %>
+
+<h3>Appointments available:</h3>
+
+To follow
+</br>
+</br>
+
+<%= link_to "Locations list", locations_path %>
