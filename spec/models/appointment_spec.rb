@@ -4,7 +4,8 @@ RSpec.describe Appointment, type: :model do
   context 'validations' do
     subject {
       described_class.new(from: DateTime.now,
-                          to: DateTime.now + 2.hours)
+                          to: DateTime.now + 2.hours,
+                          location: Location.new)
     }
 
     it { should validate_presence_of(:from) }
@@ -27,5 +28,9 @@ RSpec.describe Appointment, type: :model do
         expect(subject).to_not be_valid
       end
     end
+  end
+
+  context 'relations' do
+    it { is_expected.to belong_to(:location) }
   end
 end

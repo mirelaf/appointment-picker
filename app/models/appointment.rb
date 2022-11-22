@@ -1,4 +1,6 @@
 class Appointment < ApplicationRecord
+  belongs_to :location
+
   validates :from, presence: true
   validates :to, presence: true
   validate :from_must_be_before_to

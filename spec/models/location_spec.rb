@@ -41,4 +41,8 @@ RSpec.describe Location, type: :model do
       end    
     end
   end
+
+  context 'relations' do
+    it { is_expected.to have_many(:appointments) }
+  end
 end
