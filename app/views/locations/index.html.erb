@@ -1,0 +1,11 @@
+<h3>Locations</h3>
+
+<table>
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= link_to "Location #{location.id}", location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
