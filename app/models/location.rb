@@ -1,7 +1,7 @@
 class Location < ApplicationRecord
   has_many :appointments
 
-  validates_presence_of :day_start, :day_end, :lunch_start, :lunch_end
+  validates_presence_of :day_start, :day_end, :lunch_start, :lunch_end, :appointment_duration_minutes
   validate :times_should_be_in_chronological_order
 
   private
