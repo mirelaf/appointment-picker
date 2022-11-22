@@ -20,5 +20,12 @@ RSpec.describe Appointment, type: :model do
         expect(subject).to_not be_valid
       end
     end
+
+    describe '#same_day' do
+      it "is not valid when 'from' and 'to' are in different dates" do
+        subject.from = DateTime.new - 2.days
+        expect(subject).to_not be_valid
+      end
+    end
   end
 end
