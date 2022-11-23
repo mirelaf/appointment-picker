@@ -23,14 +23,14 @@
   </tbody>
 </table>
 
-<h3>Appointments already booked:</h3>
-<% @appointments_already_booked.each do |appointment| %>
-  <%= appointment.from.strftime("%d.%m.%Y %H:%M") %> - <%= appointment.to.strftime("%H:%M") %>
+<h3>Unavailable times:</h3>
+<% @unavailable_slots.each do |slot| %>
+  <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
   <br>
 <% end %>
 
-<h3><%= @location_available_slots.size %> slots available for new appointments:</h3>
-<% @location_available_slots.each do |slot| %>
+<h3><%= @available_slots.size %> slots available for new appointments:</h3>
+<% @available_slots.each do |slot| %>
   <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
   <br>
 <% end %>
