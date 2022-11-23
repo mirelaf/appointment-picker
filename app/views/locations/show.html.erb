@@ -1,27 +1,43 @@
 <h3>Location id: <%= @location.id %></h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Day start:</td><td><%= @location.day_start.strftime("%H:%M") %></td>
-    </tr>
-    <tr>
-      <td>Day end:</td><td><%= @location.day_end.strftime("%H:%M") %></td>
-    </tr>
-    <tr>
-      <td>Lunch start:</td><td><%= @location.lunch_start.strftime("%H:%M") %></td>
-    </tr>
-    <tr>
-      <td>Lunch end:</td><td><%= @location.lunch_end.strftime("%H:%M") %></td>
-    </tr>
-    <tr>
-      <td>Appointment duration:</td><td><%= @location.appointment_duration_minutes %> minutes</td>
-    </tr>
-    <tr>
-      <td>Search range: </td><td><strong><%= @start_date.strftime("%d.%m.%Y") %></strong> to <strong><%= @end_date.strftime("%d.%m.%Y") %></strong></td>
-    </tr>
-  </tbody>
-</table>
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      Day start:
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= @location.day_start.strftime("%H:%M") %></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      Day end:
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= @location.day_end.strftime("%H:%M") %></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      Lunch start:
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= @location.lunch_start.strftime("%H:%M") %></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      Lunch end:
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= @location.lunch_end.strftime("%H:%M") %></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      Appointment duration:
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= @location.appointment_duration_minutes %> minutes</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      Search range: 
+    </div>
+    <strong><%= @start_date.strftime("%d.%m.%Y") %></strong> - <strong><%= @end_date.strftime("%d.%m.%Y") %></strong>
+  </li>
+</ul>
 
 <h3>Unavailable times:</h3>
 <% @unavailable_slots.each do |slot| %>
