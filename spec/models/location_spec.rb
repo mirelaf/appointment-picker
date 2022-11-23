@@ -44,7 +44,7 @@ RSpec.describe Location, type: :model do
   end
 
   context 'relations' do
-    it { is_expected.to have_many(:appointments) }
+    it { is_expected.to have_many(:appointments).dependent(:destroy) }
   end
 
   describe '#available_slots' do
