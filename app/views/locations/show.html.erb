@@ -18,7 +18,7 @@
       <td>Appointment duration:</td><td><%= @location.appointment_duration_minutes %> minutes</td>
     </tr>
     <tr>
-      <td>Search range: </td><td><strong><%= @start_date %></strong> to <strong><%= @end_date %></strong></td>
+      <td>Search range: </td><td><strong><%= @start_date.strftime("%d.%m.%Y") %></strong> to <strong><%= @end_date.strftime("%d.%m.%Y") %></strong></td>
     </tr>
   </tbody>
 </table>
