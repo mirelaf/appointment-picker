@@ -1,7 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-Location.create(day_start: DateTime.parse("8am"),
+location = Location.create(day_start: DateTime.parse("8am"),
                 day_end: DateTime.parse("18pm"),
                 lunch_start: DateTime.parse("12pm"),
                 lunch_end: DateTime.parse("1pm"),
@@ -19,5 +19,5 @@ WEEKLY_APPOINTMENTS = [
 WEEKLY_APPOINTMENTS.each do |period|
   Appointment.create(from: DateTime.parse(period[:from]),
                     to: DateTime.parse(period[:to]),
-                    location: Location.first)
+                    location: location)
 end
