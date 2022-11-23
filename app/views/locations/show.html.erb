@@ -8,29 +8,32 @@
     <tr>
       <td>Day end:</td><td><%= @location.day_end.strftime("%H:%M") %></td>
     </tr>
-        <tr>
+    <tr>
       <td>Lunch start:</td><td><%= @location.lunch_start.strftime("%H:%M") %></td>
     </tr>
-        <tr>
+    <tr>
       <td>Lunch end:</td><td><%= @location.lunch_end.strftime("%H:%M") %></td>
     </tr>
-        <tr>
+    <tr>
       <td>Appointment duration:</td><td><%= @location.appointment_duration_minutes %> minutes</td>
+    </tr>
+    <tr>
+      <td>Search range: </td><td><strong><%= @start_date.strftime("%d.%m.%Y") %></strong> to <strong><%= @end_date.strftime("%d.%m.%Y") %></strong></td>
     </tr>
   </tbody>
 </table>
 
-<h3>Appointments already booked:</h3>
-
-<% @location.appointments.each do |appointment| %>
-  <%= appointment.from.strftime("%d.%m.%Y %H:%M") %> - <%= appointment.to.strftime("%H:%M") %>
+<h3>Unavailable times:</h3>
+<% @unavailable_slots.each do |slot| %>
+  <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
   <br>
 <% end %>
 
-<h3>Appointments available:</h3>
+<h3><%= @available_slots.size %> slots available for new appointments:</h3>
+<% @available_slots.each do |slot| %>
+  <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
+  <br>
+<% end %>
 
-To follow
 </br>
-</br>
-
 <%= link_to "Locations list", locations_path %>
