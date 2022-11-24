@@ -1,3 +1,21 @@
+<div>
+  <%= form_tag model: @location, local: true do |form| %>
+    <% if @location.errors.any? %>
+      <div id="error_explanation">
+        <h5>
+          <%= pluralize(@location.errors.count, "error") %> stopped
+          this location from being saved:
+        </h5>
+        <ul>
+          <% @location.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
 <%= form_for @location do |f| %>
 <div class="p-3 mb-2 bg-light">
   <strong>Edit Location <%= @location.id %></strong></br></br>
