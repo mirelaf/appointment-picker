@@ -1,14 +1,9 @@
 <h3>Locations</h3>
 
-Choose one and view possible appointment slots:
+Choose a location and view possible appointment slots:
 </br>
 </br>
 
 <% @locations.each do |location| %>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Location <%= location.id %></h5>
-    <%= button_to("Select", location_path(location), class: "btn btn-primary", method: :get) %>
-  </div>
-</div>
+  <%= link_to "Location #{location.id}", location %></br>
 <% end %>

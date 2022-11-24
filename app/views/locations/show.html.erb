@@ -1,74 +1,39 @@
-<h4>Location <%= @location.id %></h4>
+<h3>Location id: <%= @location.id %></h3>
 
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      Day start:
-    </div>
-    <span class="badge bg-primary rounded-pill"><%= @location.day_start.strftime("%H:%M") %></span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      Day end:
-    </div>
-    <span class="badge bg-primary rounded-pill"><%= @location.day_end.strftime("%H:%M") %></span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      Lunch start:
-    </div>
-    <span class="badge bg-primary rounded-pill"><%= @location.lunch_start.strftime("%H:%M") %></span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      Lunch end:
-    </div>
-    <span class="badge bg-primary rounded-pill"><%= @location.lunch_end.strftime("%H:%M") %></span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      Appointment duration:
-    </div>
-    <span class="badge bg-primary rounded-pill"><%= @location.appointment_duration_minutes %> minutes</span>
-  </li>
-</ul>
-</br>
+<table>
+  <tbody>
+    <tr>
+      <td>Day start:</td><td><%= @location.day_start.strftime("%H:%M") %></td>
+    </tr>
+    <tr>
+      <td>Day end:</td><td><%= @location.day_end.strftime("%H:%M") %></td>
+    </tr>
+    <tr>
+      <td>Lunch start:</td><td><%= @location.lunch_start.strftime("%H:%M") %></td>
+    </tr>
+    <tr>
+      <td>Lunch end:</td><td><%= @location.lunch_end.strftime("%H:%M") %></td>
+    </tr>
+    <tr>
+      <td>Appointment duration:</td><td><%= @location.appointment_duration_minutes %> minutes</td>
+    </tr>
+    <tr>
+      <td>Search range: </td><td><strong><%= @start_date.strftime("%d.%m.%Y") %></strong> to <strong><%= @end_date.strftime("%d.%m.%Y") %></strong></td>
+    </tr>
+  </tbody>
+</table>
 
-Search range:
-</br>
-<strong><%= @start_date.strftime("%d.%m.%Y") %></strong> - <strong><%= @end_date.strftime("%d.%m.%Y") %></strong>
-
-</br>
-</br>
-
-<h5>Unavailable times:</h5>
+<h3>Unavailable times:</h3>
 <% @unavailable_slots.each do |slot| %>
   <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
   <br>
 <% end %>
-</br>
-</br>
 
-<h5><%= @available_slots.size %> slots available for new appointments:</h5>
-<div class="accordion accordion-flush" id="accordionExample">
-  <% @available_slots.each_with_index do |slot, index| %>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-        data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
-          <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
-        </button>
-      </h2>
-      <div id="collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          Want to book it?
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<h3><%= @available_slots.size %> slots available for new appointments:</h3>
+<% @available_slots.each do |slot| %>
+  <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
+  <br>
+<% end %>
 
 </br>
-<%= link_to "Back to the list of locations", locations_path %>
-</br>
-</br>
+<%= link_to "Locations list", locations_path %>
