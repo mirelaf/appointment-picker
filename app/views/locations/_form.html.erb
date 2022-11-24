@@ -1,4 +1,6 @@
 <%= form_for @location do |f| %>
+<div class="p-3 mb-2 bg-light">
+  <strong>Edit Location <%= @location.id %></strong></br></br>
   <div class="form-group">
     <%= label_tag :day_start, 'Day start (hh:mm)' %></br>
     <%= f.time_select :day_start, class: 'form-control', value: @location.new_record? ? "" : @location.day_start.strftime("%H:%M"), placeholder: '08:00', required: true %>
@@ -22,6 +24,7 @@
   <div class="form-group col-sm-6">
     <%= label_tag :appointment_duration_minutes, 'Appointment duration' %>
     <%= f.number_field :appointment_duration_minutes, class: 'form-control', value: @location.new_record? ? "" : @location.appointment_duration_minutes, placeholder: '30', required: true %>
+  </div>
   </div>  
   </br>
     <%= link_to("Cancel", @location.try(:id) ? location_path(@location) : root_path, class: 'btn btn-light') %>
