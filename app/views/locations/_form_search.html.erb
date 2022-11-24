@@ -6,10 +6,11 @@
   <div class="row">
     <div class="col-sm-6">
       <strong>Select period: </strong>
-      <%= f.text_field(:daterange, class: "form-control", name: "daterange", data: {target: "daterange", style: "width: 520px;"}, value: @start_date.present? ? "#{@start_date.strftime('%d.%m.%Y')} - #{@end_date.strftime('%d.%m.%Y')}" : "04.01.2021 - 07.01.2021", required: true) %>
+      <%= f.text_field(:daterange, class: "form-control", name: "daterange", data: {target: "daterange", style: "width: 520px;"}, value: @start_date.present? ? "#{@start_date.strftime('%d.%m.%Y')} - #{@end_date.strftime('%d.%m.%Y')}" : "#{Date.today.strftime('%d.%m.%Y')} - #{(Date.today + 4.days).strftime('%d.%m.%Y')}", required: true) %>
     </div>
   </div>
-  </br>
+  <small class="text-muted">Tip: test with 04.01.2021 - 07.01.2021</small>
+  </br></br>
   <div class="row">
     <div class="col float-left">
       <%= f.submit "Show slots", class: 'btn btn-primary', formaction: location_find_slots_path(@location) %>
