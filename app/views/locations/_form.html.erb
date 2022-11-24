@@ -1,0 +1,30 @@
+<%= form_for @location do |f| %>
+  <div class="form-group">
+    <%= label_tag :day_start, 'Day start (hh:mm)' %></br>
+    <%= f.time_select :day_start, class: 'form-control', value: @location.new_record? ? "" : @location.day_start.strftime("%H:%M"), placeholder: '08:00', required: true %>
+  </div>
+  </br>
+  <div class="col form-group">
+    <%= label_tag :lunch_start, 'Lunch start (hh:mm)' %></br>
+    <%= f.time_select :lunch_start, class: 'form-control', value: @location.new_record? ? "" : @location.lunch_start.strftime("%H:%M"), placeholder: '12:00', required: true %>
+  </div>
+  </br>
+  <div class="col form-group">
+    <%= label_tag :lunch_end, 'Lunch end (hh:mm)' %></br>
+    <%= f.time_select :lunch_end, class: 'form-control', value: @location.new_record? ? "" : @location.lunch_end.strftime("%H:%M"), placeholder: '13:00', required: true %>
+  </div>
+  </br>
+  <div class="col form-group">
+    <%= label_tag :day_end, 'Day end (hh:mm)' %></br>
+    <%= f.time_select :day_end, class: 'form-control', value: @location.new_record? ? "" : @location.day_end.strftime("%H:%M"), placeholder: '18:00', required: true %>
+  </div>
+  </br>
+  <div class="form-group col-sm-6">
+    <%= label_tag :appointment_duration_minutes, 'Appointment duration' %>
+    <%= f.number_field :appointment_duration_minutes, class: 'form-control', value: @location.new_record? ? "" : @location.appointment_duration_minutes, placeholder: '30', required: true %>
+  </div>  
+  </br>
+    <%= link_to("Cancel", @location.try(:id) ? location_path(@location) : root_path, class: 'btn btn-light') %>
+    <%= f.button 'Save', class: "btn btn-primary" %>
+  </br>
+<% end %>
