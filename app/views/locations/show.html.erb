@@ -38,18 +38,34 @@
     <strong><%= @start_date.strftime("%d.%m.%Y") %></strong> - <strong><%= @end_date.strftime("%d.%m.%Y") %></strong>
   </li>
 </ul>
+</br>
+</br>
 
 <h3>Unavailable times:</h3>
 <% @unavailable_slots.each do |slot| %>
   <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
   <br>
 <% end %>
+</br>
+</br>
 
 <h3><%= @available_slots.size %> slots available for new appointments:</h3>
-<% @available_slots.each do |slot| %>
-  <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
-  <br>
-<% end %>
+<div class="accordion" id="accordionExample">
+  <% @available_slots.each_with_index do |slot, index| %>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
+          <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
+        </button>
+      </h2>
+      <div id="collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <button type="button" class="btn btn-primary">Book</button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 </br>
 <%= link_to "Locations list", locations_path %>
