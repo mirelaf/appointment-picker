@@ -1,0 +1,33 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<%= form_for :search_range, url: "compute_slots" do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+      <h5>Select period: </h5>
+      <%= f.text_field(:daterange, class: "form-control", name: "daterange", data: {target: "daterange", style: "width: 520px;"}, value: @start_date.present? ? "#{@start_date.strftime('%d.%m.%Y')} - #{@end_date.strftime('%d.%m.%Y')}" : "04.01.2021 - 07.01.2021", required: true) %>
+    </div>
+  </div>
+  </br>
+  <div class="row">
+    <div class="col float-left">
+      <%= f.submit "Show slots", class: 'btn btn-primary', formaction: location_find_slots_path(@location) %>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    $('input[name="daterange"]').daterangepicker({
+      locale: {
+        format: 'DD.MM.YYYY'
+      },
+      opens: 'right'
+    }, function(start, end, label) {
+      start.format('DD.MM.YYYY')+'-'+end.format('DD.MM.YYYY');
+    });
+  });
+</script>
+
