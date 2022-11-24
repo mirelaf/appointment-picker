@@ -1,4 +1,7 @@
 <h4>Location <%= @location.id %></h4>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= button_to("Edit", edit_location_path(@location), class: "btn btn-light float-right", method: :get) %>
+</div>
 
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -6,12 +9,6 @@
       Day start:
     </div>
     <span class="badge bg-primary rounded-pill"><%= @location.day_start.strftime("%H:%M") %></span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      Day end:
-    </div>
-    <span class="badge bg-primary rounded-pill"><%= @location.day_end.strftime("%H:%M") %></span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
@@ -24,6 +21,12 @@
       Lunch end:
     </div>
     <span class="badge bg-primary rounded-pill"><%= @location.lunch_end.strftime("%H:%M") %></span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      Day end:
+    </div>
+    <span class="badge bg-primary rounded-pill"><%= @location.day_end.strftime("%H:%M") %></span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-start">
     <div class="ms-2 me-auto">
