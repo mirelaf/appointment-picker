@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :locations do
     resources :appointments
   end
+
+  post "locations/:id/find_slots" => "locations#find_slots", as: "location_find_slots"
 end
