@@ -1,24 +1,6 @@
-# README
+# Appointment picker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For a set of locations,
+- configure the schedule for the day, e.g. the time window for appointments, the lunch break, and how long an appointment would last, by default
+- search and see what slots are available in a period, and what are not
+- book an appointment
