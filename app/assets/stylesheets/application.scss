@@ -11,4 +11,20 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "../../../node_modules/bootstrap/scss/bootstrap"
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+.accordion-button {
+  &:not(.collapsed) {
+    &::after {
+      background-image: none;
+    }
+  }
+
+  // Accordion icon
+  &::after {
+    background-image: none;
+  }
+
+  &:hover {
+    background-color: #ecf4ff;
+  }
+}
