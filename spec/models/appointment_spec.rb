@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe Appointment, type: :model do
   context 'validations' do
     subject {
-      described_class.new(from: DateTime.now,
-                          to: DateTime.now + 2.hours,
+      described_class.new(from: DateTime.parse("22 Nov 2022 09:00am"),
+                          to: DateTime.parse("22 Nov 2022 11:00am"),
                           location: Location.new)
     }
 
@@ -17,14 +17,14 @@ RSpec.describe Appointment, type: :model do
       end
 
       it "is not valid when 'to' is before 'from'" do
-        subject.from = DateTime.now + 2.hours
+        subject.from = DateTime.parse("22 Nov 2022 2pm")
         expect(subject).to_not be_valid
       end
     end
 
     describe '#same_day' do
       it "is not valid when 'from' and 'to' are in different dates" do
-        subject.from = DateTime.new - 2.days
+        subject.from = DateTime.parse("20 Nov 2022 11:00am")
         expect(subject).to_not be_valid
       end
     end
