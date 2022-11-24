@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all
+    @locations = Location.all.order("id asc")
   end
 
   def edit
@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
-    @locations = Location.all
+    @locations = Location.all.order("id asc")
   end
 
   def find_slots
