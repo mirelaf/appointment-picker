@@ -1,9 +1,8 @@
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-<%= form_for :search_range, url: "compute_slots" do |f| %>
+<%= form_for :search_range, url: "find_slots", method: :get do |f| %>
   <div class="row">
     <div class="col-sm-6">
       <h5>Select period: </h5>
