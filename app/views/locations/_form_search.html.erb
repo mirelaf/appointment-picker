@@ -5,7 +5,7 @@
 <%= form_for :search_range, url: "find_slots", method: :get do |f| %>
   <div class="row">
     <div class="col-sm-6">
-      <h5>Select period: </h5>
+      <strong>Select period: </strong>
       <%= f.text_field(:daterange, class: "form-control", name: "daterange", data: {target: "daterange", style: "width: 520px;"}, value: @start_date.present? ? "#{@start_date.strftime('%d.%m.%Y')} - #{@end_date.strftime('%d.%m.%Y')}" : "04.01.2021 - 07.01.2021", required: true) %>
     </div>
   </div>

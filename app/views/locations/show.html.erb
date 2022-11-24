@@ -1,4 +1,15 @@
-<h4>Location <%= @location.id %></h4>
+<div class="dropdown">
+  <button class="btn btn-light dropdown-toggle text-primary fw-bold" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Location <%= @location.id%>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <% @locations.each do |location| %>
+     <% next if location.id == @location.id %>
+      <%= link_to "Location #{location.id}", location_path(location), class: "dropdown-item" %>
+    <% end %>
+  </ul>
+</div>
+
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <%= button_to("Edit", edit_location_path(@location), class: "btn btn-light float-right", method: :get) %>
 </div>
@@ -42,7 +53,7 @@
 </br>
 <% if @unavailable_slots.present? %>
   <div class="p-3 mb-2 bg-light">
-    <h5>Unavailable times:</h5>
+    <h6><strong>Unavailable times:</strong></h6>
     <% @unavailable_slots.each do |slot| %>
       <%= slot[:from].strftime("%d.%m.%Y %H:%M") %> - <%= slot[:to].strftime("%H:%M") %>
       <br>
@@ -53,7 +64,7 @@
 
 <% if @available_slots.present? %>
   <div class="p-3 mb-2 bg-light">
-    <h5><span class="text-primary"><%= @available_slots.size %></span> slots available for new appointments:</h5>
+    <h6><strong><span class="text-primary"><%= @available_slots.size %></span> slots available for new appointments:</strong></h6>
     <div class="accordion accordion-flush" id="accordionExample">
       <% @available_slots.each_with_index do |slot, index| %>
         <div class="accordion-item">
@@ -84,3 +95,9 @@
 <%= link_to "Back to the list of locations", locations_path %>
 </br>
 </br>
+
+<script type="text/javascript">
+$(".dropdown-toggle").click(function(){
+    $(".dropdown-menu").slideToggle();
+});
+</script>
